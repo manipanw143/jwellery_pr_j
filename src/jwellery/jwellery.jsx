@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './jwellery.css';
-// import logo from '../img/lo.jpg'; 
+// import logo from '../img/lo.jpg';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 
@@ -11,7 +11,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [rate, setRate] = useState('');
   const [goldRate, setGoldRate] = useState('');
   const [silverRate, setSilverRate] = useState('');
-
+    
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -25,25 +25,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
 
   const downloadCard = () => {
     const cardElement = document.getElementById('jewelry-card');
-
-    // Temporarily replace input fields with text
-    const gramElement = document.getElementById('gram-value');
-    const rateElement = document.getElementById('rate-value');
-    const goldRateElement = document.getElementById('gold-rate-value');
-    const silverRateElement = document.getElementById('silver-rate-value');
-
-    gramElement.innerText = gram || 'Gram';
-    rateElement.innerText = rate || 'Rate';
-    goldRateElement.innerText = goldRate || 'Gold';
-    silverRateElement.innerText = silverRate || 'Silver';
-
     html2canvas(cardElement).then((canvas) => {
-      // Revert changes after capturing the canvas
-      gramElement.innerText = '';
-      rateElement.innerText = '';
-      goldRateElement.innerText = '';
-      silverRateElement.innerText = '';
-
       canvas.toBlob((blob) => {
         saveAs(blob, `${jewelryName}_${festival}.png`);
       });
@@ -91,7 +73,93 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setSelectedItem(e.target.value)}
             />
             <datalist id="jewelry-types">
-              {/* Add your jewelry options here */}
+              <option value="Har" />
+              <option value="Deepa" />
+              <option value="Silver dollar" />
+              <option value="Necklace" />
+              <option value="Plate" />
+              <option value="Silver bracelet" />
+              <option value="Ring" />
+              <option value="Kum kum bharni" />
+              <option value="Silver black beds chain" />
+              <option value="Kamal" />
+              <option value="Snake" />
+              <option value="Silver rosary" />
+              <option value="Tali" />
+              <option value="Bowl" />
+              <option value="Silver gold plated item" />
+              <option value="Kola" />
+              <option value="Kamakshi deepa" />
+              <option value="Silver kada" />
+              <option value="Dollar" />
+              <option value="Vigraha" />
+              <option value="Silver bangle" />
+              <option value="Mura" />
+              <option value="Glass" />
+              <option value="Mattal" />
+              <option value="Banna plant" />
+              <option value="Chain" />
+              <option value="Panch patra" />
+              <option value="Laxmi kas" />
+              <option value="Rudrani" />
+              <option value="Stone gundu" />
+              <option value="Pal ada" />
+              <option value="Antique kamal" />
+              <option value="Neck chain" />
+              <option value="Antique har" />
+              <option value="Leg chain" />
+              <option value="Antique necklace" />
+              <option value="Cup plate" />
+              <option value="Jumkis" />
+              <option value="Dab" />
+              <option value="Pearl chains" />
+              <option value="Tulsi plant" />
+              <option value="Black beds chain" />
+              <option value="Bendgi" />
+              <option value="Bracelet" />
+              <option value="Chambu" />
+              <option value="Vale chip" />
+              <option value="Punjabi kada" />
+              <option value="Paner chambu" />
+              <option value="Mango bhat" />
+              <option value="Kalsa chambu" />
+              <option value="Tope tali" />
+              <option value="Cow" />
+              <option value="Stone mattal" />
+              <option value="Stand" />
+              <option value="Pendant" />
+              <option value="Flower butti" />
+              <option value="Baby bracelet" />
+              <option value="Fruit bowl" />
+              <option value="Choker" />
+              <option value="Silver frame" />
+              <option value="Jomalla gundu" />
+              <option value="Silver pen" />
+              <option value="Sima kada" />
+              <option value="Silver ring" />
+              <option value="Bangales" />
+              <option value="Arke item" />
+              <option value="Baby bangles" />
+              <option value="Gulsh" />
+              <option value="Bugri" />
+              <option value="Kada" />
+              <option value="Drops" />
+              <option value="Anaker" />
+              <option value="Gold frame" />
+              <option value="Gift item" />
+              <option value="Baby ring" />
+              <option value="Silver coin" />
+              <option value="Bessari" />
+              <option value="Old coin" />
+              <option value="Gold coin" />
+              <option value="Mandasana" />
+              <option value="Bell" />
+              <option value="Julla" />
+              <option value="Mala flower" />
+              <option value="Flower" />
+              <option value="Kapor arti" />
+              <option value="Spoon" />
+              <option value="Silver coconut" />
             </datalist>
           </span>
         </div>
@@ -99,24 +167,20 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           <span style={{ width: "60px" }}>
             Gram
             <input
-              id="gram-input"
               style={{ border: "1px solid #f39c12", width: "40px" }}
               type="text"
               value={gram}
               onChange={(e) => setGram(e.target.value)}
             />
-            <span id="gram-value" style={{ display: 'none' }}></span>
           </span>
           <span style={{ width: "60px" }}>
             Rate
             <input
-              id="rate-input"
               style={{ border: "1px solid #f39c12", width: "40px" }}
               type="text"
               value={rate}
               onChange={(e) => setRate(e.target.value)}
             />
-            <span id="rate-value" style={{ display: 'none' }}></span>
           </span>
         </div>
         <div className="details">
@@ -137,24 +201,20 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             <span style={{ width: "60px" }}>
               Gold
               <input
-                id="gold-rate-input"
                 style={{ border: "1px solid #f39c12", width: "40px" }}
                 type="text"
                 value={goldRate}
                 onChange={(e) => setGoldRate(e.target.value)}
               />
-              <span id="gold-rate-value" style={{ display: 'none' }}></span>
             </span>
             <span style={{ width: "60px" }}>
               Silver
               <input
-                id="silver-rate-input"
                 style={{ border: "1px solid #f39c12", width: "40px" }}
                 type="text"
                 value={silverRate}
                 onChange={(e) => setSilverRate(e.target.value)}
               />
-              <span id="silver-rate-value" style={{ display: 'none' }}></span>
             </span>
           </div>
         </div>
