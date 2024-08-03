@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './jwellery.css';
-// import logo from '../img/lo.jpg';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 
@@ -11,7 +10,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [rate, setRate] = useState('');
   const [goldRate, setGoldRate] = useState('');
   const [silverRate, setSilverRate] = useState('');
-    
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -35,7 +34,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const datedata = () => {
     let date = new Date();
     let day = String(date.getDate()).padStart(2, '0');
-    let month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+    let month = String(date.getMonth() + 1).padStart(2, '0');
     let year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -60,7 +59,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               style={{
                 border: "1px solid #f39c12",
                 color: "#f39c12",
-                fontSize: "20px",
+                fontSize: "16px",
                 fontWeight: "bold",
                 textAlign: "center",
                 padding: "5px",
@@ -73,7 +72,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setSelectedItem(e.target.value)}
             />
             <datalist id="jewelry-types">
-              <option value="Har" />
+            <option value="Har" />
               <option value="Deepa" />
               <option value="Silver dollar" />
               <option value="Necklace" />
