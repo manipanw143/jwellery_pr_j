@@ -1,7 +1,7 @@
 // src/DiwaliCard.js
 import React from 'react';
 import './DiwaliCard.css';
-import diwali from '../img/Di.jpg';
+// import diwali from '../img/Di.jpg';
 const DiwaliCard = () => {
   return (
     <div className="card">
