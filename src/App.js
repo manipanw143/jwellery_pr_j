@@ -3,7 +3,7 @@
 import React from 'react';
 import JewelryCard from './jwellery/jwellery';
 import './App.css';
-import DiwaliCard from './jwellery/Diwali';
+// import DiwaliCard from './jwellery/Diwali';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './jwellery.css';
-import logo from '../img/lo.jpg'; // Adjust the path to your logo
+// import logo from '../img/lo.jpg'; 
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 
