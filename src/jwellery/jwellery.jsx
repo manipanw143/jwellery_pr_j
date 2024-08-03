@@ -189,9 +189,9 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           <p>#27, Nehru Road, Kullappa Circle, Kammanahalli, Bangalore~560084</p>
         </div>
         <div className="items-available">
-          {/* <span>Gold Jewellery, Silver Jewellery</span>
+          <span>Gold Jewellery, Silver Jewellery</span>
           <span>Antique Jewellery, Diamond Jewellery</span>
-          <span>Lucky Birth Stone Jewellery</span> */}
+          <span>Lucky Birth Stone Jewellery</span>
           <span style={{ fontFamily: "bold" }}>
             Today Rate
             <span>Date : {datedata()}</span>
