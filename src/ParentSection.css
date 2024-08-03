@@ -1,0 +1,91 @@
+.customer_section {
+    padding: 20px 0;
+  }
+  
+  .container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  
+  .carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .client_section_2 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 300px;
+    /* padding: 100px; */
+    padding-bottom: 100px;
+    padding-top: 40px;
+  }
+  
+  .client_main {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: space-between;
+  }
+  
+  .client_left {
+    flex: 1;
+  }
+  
+  .client_right {
+    flex: 2;
+    padding-left: 20px;
+  }
+  
+  .client_img img {
+    max-width: 140px;
+    border-radius: 5%;
+  }
+  
+  .name_text {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .dolor_text {
+    font-size: 14px;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .carousel-control-prev {
+    left: 10px;
+  }
+  
+  .carousel-control-next {
+    right: 10px;
+  }
+  

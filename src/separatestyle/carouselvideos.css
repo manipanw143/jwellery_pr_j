@@ -1,0 +1,27 @@
+.carousel-videos {
+    /* background-color: blue; */
+    width: 60%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the carousel */
+    padding: 20px; 
+    /* margin-right: ;  */
+}
+
+  .carousel-videos-item {
+    /* Set width for each item */
+    width: 80%; /* Adjust the width of each item */
+    /* Optionally, add margin or padding to create space between items */
+    margin-right: 0px; /* Example margin */ 
+}
+.react-multiple-carousel__arrow::before {
+    font-size: 10px;
+    color: #fff;
+    display: block;
+    font-family: revicons;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+/* .react-multiple-carousel__arrow--left {
+    left: calc(1% + 1px);
+}   */

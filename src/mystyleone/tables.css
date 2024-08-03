@@ -1,0 +1,40 @@
+.table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+  }
+  
+  thead {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
+    z-index: 2; /* Ensure the header is above the fixed column */
+  }
+  
+  .fixed-column {
+    position: sticky;
+    left: 0;
+    background-color: #f9f9f9;
+    z-index: 1;
+  }
+  
+  @media (max-width: 768px) {
+    th, td {
+      font-size: 2vw; 
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    th, td {
+      font-size: 1.4vw; 
+    }
+  }
+  

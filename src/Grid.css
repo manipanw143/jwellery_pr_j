@@ -1,0 +1,69 @@
+.grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the grid horizontally */
+    margin: 20px; /* Add space around the grid */
+  }
+  
+  .boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Space between boxes and the info line */
+  }
+  
+  .box {
+    width: 270px;
+    height: 150px;
+    border: 2px solid #cd1b1b; /* Red border with 2px width */
+    padding: 10px; /* Padding inside the box */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  .info-line {
+   border-left: 4px #d10a0a;
+  }
+  .outer-line{
+    border-top: 4px solid #cd1b1b; 
+    border-right: 2px solid #cd1b1b; 
+    border-left:  2px solid #cd1b1b; 
+    border-bottom: 4px solid #cd1b1b; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    width: fit-content; 
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 70px 190px 150px 150px 60px 90px; /* First column auto width, rest equal */
+    grid-gap: 1px; /* Adjust the gap between cells */
+  }
+  
+  .grid-cell {
+    border: 1px solid #ccc; /* Border for each cell */
+    padding: 10px; /* Adjust padding as needed */
+    text-align: center; /* Center align content */
+  }
+  
+  .header {
+    background-color: #ec1616; /* Background color for header */
+    color: white; /* Text color for header */
+  }
+  
+  .small-column {
+    width: 50px; /* Width of the first column */
+  }
+  .boxes .box{
+    display: flex;
+    justify-content: center;
+  }
+  .boxes .box div{
+    margin-top: -10px;
+    border: 2px solid  #cd1b1b;
+    width: 200px;
+    height: 25px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color:  #cd1b1b;
+  }

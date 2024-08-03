@@ -1,0 +1,55 @@
+.custom-img {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover; /* Ensure the image covers the box */
+  }
+  
+  .owl-carousel .owl-item {
+    margin: 0 2.5px; /* Adjust spacing between items */
+  }
+  
+  .owl-carousel .owl-stage {
+    display: flex;
+  }
+  
+  .section-news {
+    padding: 20px 0;
+  }
+
+  .img-b{
+    width: 100px;
+    height: 100px;
+  }
+  
+  .title-a {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .title-link a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .title-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .card-box-b {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 2px;
+  }
+  

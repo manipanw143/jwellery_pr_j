@@ -1,0 +1,41 @@
+.user-profile-card {
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .user-profile-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-cover-photo {
+    border-radius: 10px 10px 0 0;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4a4a4a;
+  }
+  
+  .card-description p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #595959;
+  }
+  
+  .card-description p strong {
+    color: #1890ff;
+  }
+  
+  .card-description p .fa-icon {
+    margin-right: 8px;
+    color: #1890ff;
+  }
+  

@@ -1,0 +1,63 @@
+/* src/DiwaliCard.css */
+.card {
+  background: url('../img/Di.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  /* box-shadow: 0 0 15px rgba(217, 3, 3, 0.836); */
+  max-width: 400px;
+  margin: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+  .contact {
+    font-size: 12px;
+  }
+  
+  .title {
+    font-size: 36px;
+    margin: 10px 0;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  h2 {
+    margin: 20px 0;
+    font-size: 24px;
+  }
+  
+  .bangles {
+    margin: 20px 0;
+  }
+  
+  .bangles img {
+    width: 200px;
+  }
+  
+  .jewellery-types {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  .jewellery-types span {
+    flex: 1;
+    padding: 5px;
+    margin: 0 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+
+  .header-contain{
+    display: flex;
+    justify-content: space-between;
+  }
+  

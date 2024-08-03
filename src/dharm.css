@@ -1,0 +1,146 @@
+.customer_section {
+    padding: 20px 0;
+  }
+  
+  .container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  
+  .carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .client_section_2 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 300px;
+    /* padding: 100px; */
+    padding-bottom: 100px;
+    padding-top: 40px;
+  }
+  
+  .client_main {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: space-between;
+  }
+  
+  .client_left {
+    flex: 1;
+  }
+  
+  .client_right {
+    flex: 2;
+    padding-left: 20px;
+  }
+  
+  .client_img img {
+    max-width: 140px;
+    border-radius: 5%;
+  }
+  
+  .name_text {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .dolor_text {
+    font-size: 14px;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .carousel-control-prev {
+    left: 10px;
+  }
+  
+  .carousel-control-next {
+    right: 10px;
+  }
+  
+  .custom-img {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover; /* Ensure the image covers the box */
+  }
+  
+  .owl-carousel .owl-item {
+    margin: 0 2.5px; /* Adjust spacing between items */
+  }
+  
+  .owl-carousel .owl-stage {
+    display: flex;
+  }
+  
+  .section-news {
+    padding: 20px 0;
+  }
+
+  .img-b{
+    width: 100px;
+    height: 100px;
+  }
+  
+  .title-a {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .title-link a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .title-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .card-box-b {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 2px;
+  }
+  

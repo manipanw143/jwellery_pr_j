@@ -1,0 +1,38 @@
+.image-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.75rem; /* This replaces the ds-rounded-xl class */
+  }
+  
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 0.75rem; /* This replaces the ds-rounded-xl class */
+    transition: transform 0.5s ease-in-out; /* This replaces hover:ds-transition-transform, hover:ds-duration-500, hover:ds-ease-in-out */
+  }
+  
+  .image-container:hover .image {
+    transform: scale(1.1); /* This replaces hover:ds-scale-110 */
+  }
+  
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 28px; /* Adjust size as needed */
+    height: 28px; /* Adjust size as needed */
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 1;
+  }
+  
+  .play-icon:hover {
+    opacity: 1;
+  }

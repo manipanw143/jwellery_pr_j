@@ -1,0 +1,32 @@
+/* owl.css */
+.carousel-wrapper {
+    position: relative;
+  }
+  
+  .owl-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%; /* Ensure the navigation buttons cover the entire width */
+    z-index: 100; /* Ensure a higher z-index */
+  }
+  
+  .owl-prev, .owl-next {
+    position: absolute;
+    font-size: 50rem;
+    top: -35px;
+    height: 40px; /* Adjust the font size of the navigation buttons */
+    width: 20px;
+    background-color: yellow !important;
+    /* background-color: chocolate; padding: 0 10px;  */
+    color: rgb(179, 33, 33); /* Set color to ensure visibility */
+  }
+  
+  .owl-prev {
+    left: 0; /* Position the previous button at the left */
+  }
+  
+  .owl-next {
+    right: 0; /* Position the next button at the right */
+  }
+  

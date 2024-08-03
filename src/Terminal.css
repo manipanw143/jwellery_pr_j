@@ -1,0 +1,37 @@
+/* src/Terminal.css */
+.terminal {
+    background-color: #2d2d2d;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.output {
+    white-space: pre-wrap;
+    overflow-y: auto;
+    max-height: 400px;
+    margin-bottom: 10px;
+}
+
+.input-form {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    margin-right: 5px;
+    color: #00ff00;
+}
+
+.input {
+    background: none;
+    border: none;
+    color: #d4d4d4;
+    outline: none;
+    flex-grow: 1;
+}
