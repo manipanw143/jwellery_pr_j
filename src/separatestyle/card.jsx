@@ -5,7 +5,7 @@ export const TempleCard = () => {
   return (
     
         <div className="sample-card">
-          <a href="#" className="no-tap-highlight">
+          <a href="/business" className="no-tap-highlight">
             <div className="text-compact-xxs">
               <div className="relative card scorecard">
                 <div className="flex justify-between items-center">
@@ -59,16 +59,16 @@ export const TempleCard = () => {
                 </p>
               
                 <div className="flex mt-2 py-1 border-t line-default-translucent">
-                  <a href="#" title="" className="inline-flex items-start leading-none mr-4">
+                  <a href="/Business" title="" className="inline-flex items-start leading-none mr-4">
                     <span className="text-compact-xs decoration-ui-stroke block">Business</span>
                   </a>
-                  <a href="#" title="" className="inline-flex items-start leading-none mr-4">
+                  <a href="/Family" title="" className="inline-flex items-start leading-none mr-4">
                     <span className="text-compact-xs decoration-ui-stroke block">Family</span>
                   </a>
-                  <a href="#" title="" className="inline-flex items-start leading-none mr-4">
+                  <a href="/Education" title="" className="inline-flex items-start leading-none mr-4">
                     <span className="text-compact-xs  decoraton-ui-stroke block">Education</span>
                   </a>
-                  <a href="#" title="" className="inline-flex items-start leading-none mr-4">
+                  <a href="TempleFunvtion" title="" className="inline-flex items-start leading-none mr-4">
                     <span className="text-compact-xs decoration-ui-stroke block">TempleFunction</span>
                   </a>
                 </div>
