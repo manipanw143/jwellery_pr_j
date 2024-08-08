@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './jwellery.css';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
-import { FaPalette } from 'react-icons/fa'; // Importing the palette icon from react-icons
+import { FaPalette } from 'react-icons/fa';
 
 const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Ambika Jewellers" }) => {
   const [image, setImage] = useState(null);
@@ -13,7 +13,9 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [silverRate, setSilverRate] = useState('');
   const [selectedFestival, setSelectedFestival] = useState(festival || 'Diwali');
   const [customFestival, setCustomFestival] = useState('');
-  const [cardColor, setCardColor] = useState('#fff8e1'); // default card color
+  const [cardColor, setCardColor] = useState('#fff8e1'); 
+  const [spanBgColor, setSpanBgColor] = useState('#f39c12'); // default background color for span
+  const [spanFontColor, setSpanFontColor] = useState('#fff'); // default font color for span
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -57,6 +59,23 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
     }
   };
 
+  const getBackgroundImage = (festival) => {
+    switch (festival) {
+      case 'Diwali':
+        return 'url(/Rangoli.jpg)';
+      case 'Dussehra':
+        return 'url(/Di.jpg)';
+      case 'Ganesh Chaturthi':
+        return 'url(/path/to/ganesh-chaturthi-background.jpg)';
+      case 'Navratri':
+        return 'url(/path/to/navratri-background.jpg)';
+      case 'Christmas':
+        return 'url(/path/to/christmas-background.jpg)';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="card-container">
       <div className="controls-container">
@@ -84,12 +103,32 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             onChange={(e) => setCardColor(e.target.value)} 
             title="Choose Card Color"
           />
+          <input 
+            type="color" 
+            value={spanBgColor} 
+            onChange={(e) => setSpanBgColor(e.target.value)} 
+            title="Choose Span Background Color"
+            style={{ marginLeft: '10px' }}
+          />
+          <input 
+            type="color" 
+            value={spanFontColor} 
+            onChange={(e) => setSpanFontColor(e.target.value)} 
+            title="Choose Span Font Color"
+            style={{ marginLeft: '10px' }}
+          />
         </div>
       </div>
       <div 
         className="jewelry-card" 
         id="jewelry-card" 
-        style={{ backgroundColor: cardColor }}
+        style={{ 
+          backgroundColor: cardColor, 
+          backgroundImage: getBackgroundImage(customFestival || selectedFestival),
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       >
         <div className="logo-container">
           <h2 style={{ color: "#f39c12" }}>{shopName}</h2>
@@ -103,7 +142,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           )}
         </div>
         <div className="items-available">
-          <span>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>
             <input
               style={{
                 border: "1px solid #f39c12",
@@ -124,96 +163,12 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               {/* Your existing jewelry options */}
               <option value="Har" />
               <option value="Deepa" />
-              <option value="Silver dollar" />
-              <option value="Necklace" />
-              <option value="Plate" />
-              <option value="Silver bracelet" />
-              <option value="Ring" />
-              <option value="Kum kum bharni" />
-              <option value="Silver black beds chain" />
-              <option value="Kamal" />
-              <option value="Snake" />
-              <option value="Silver rosary" />
-              <option value="Tali" />
-              <option value="Bowl" />
-              <option value="Silver gold plated item" />
-              <option value="Kola" />
-              <option value="Kamakshi deepa" />
-              <option value="Silver kada" />
-              <option value="Dollar" />
-              <option value="Vigraha" />
-              <option value="Silver bangle" />
-              <option value="Mura" />
-              <option value="Glass" />
-              <option value="Mattal" />
-              <option value="Banna plant" />
-              <option value="Chain" />
-              <option value="Panch patra" />
-              <option value="Laxmi kas" />
-              <option value="Rudrani" />
-              <option value="Stone gundu" />
-              <option value="Pal ada" />
-              <option value="Antique kamal" />
-              <option value="Neck chain" />
-              <option value="Antique har" />
-              <option value="Leg chain" />
-              <option value="Antique necklace" />
-              <option value="Cup plate" />
-              <option value="Jumkis" />
-              <option value="Dab" />
-              <option value="Pearl chains" />
-              <option value="Tulsi plant" />
-              <option value="Black beds chain" />
-              <option value="Bendgi" />
-              <option value="Bracelet" />
-              <option value="Chambu" />
-              <option value="Vale chip" />
-              <option value="Punjabi kada" />
-              <option value="Paner chambu" />
-              <option value="Mango bhat" />
-              <option value="Kalsa chambu" />
-              <option value="Tope tali" />
-              <option value="Cow" />
-              <option value="Stone mattal" />
-              <option value="Stand" />
-              <option value="Pendant" />
-              <option value="Flower butti" />
-              <option value="Baby bracelet" />
-              <option value="Fruit bowl" />
-              <option value="Choker" />
-              <option value="Silver frame" />
-              <option value="Jomalla gundu" />
-              <option value="Silver pen" />
-              <option value="Sima kada" />
-              <option value="Silver ring" />
-              <option value="Bangales" />
-              <option value="Arke item" />
-              <option value="Baby bangles" />
-              <option value="Gulsh" />
-              <option value="Bugri" />
-              <option value="Kada" />
-              <option value="Drops" />
-              <option value="Anaker" />
-              <option value="Gold frame" />
-              <option value="Gift item" />
-              <option value="Baby ring" />
-              <option value="Silver coin" />
-              <option value="Bessari" />
-              <option value="Old coin" />
-              <option value="Gold coin" />
-              <option value="Mandasana" />
-              <option value="Bell" />
-              <option value="Julla" />
-              <option value="Mala flower" />
-              <option value="Flower" />
-              <option value="Kapor arti" />
-              <option value="Spoon" />
-              <option value="Silver coconut" />
+              {/* Other options */}
             </datalist>
           </span>
         </div>
         <div className="items-available" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-          <span style={{ width: "60px" }}>
+          <span style={{ width: "60px", backgroundColor: spanBgColor, color: spanFontColor }}>
             Gram
             <input
               style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -222,7 +177,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setGram(e.target.value)}
             />
           </span>
-          <span style={{ width: "60px" }}>
+          <span style={{ width: "60px" , backgroundColor: spanBgColor, color: spanFontColor }}>
             Rate
             <input
               style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -239,15 +194,15 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           <p>#27, Nehru Road, Kullappa Circle, Kammanahalli, Bangalore~560084</p>
         </div>
         <div className="items-available">
-          <span>Gold Jewellery, Silver Jewellery</span>
-          <span>Antique Jewellery, Diamond Jewellery</span>
-          <span>Lucky Birth Stone Jewellery</span>
-          <span style={{ fontFamily: "bold" }}>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }} >Gold Jewellery, Silver Jewellery</span>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>Antique Jewellery, Diamond Jewellery</span>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>Lucky Birth Stone Jewellery</span>
+          <span style={{ fontFamily: "bold",backgroundColor: spanBgColor, color: spanFontColor }} >
             Today Rate
-            <span>Date : {datedata()}</span>
+            <span style={{ backgroundColor: spanBgColor, color: spanFontColor }} >Date : {datedata()}</span>
           </span>
           <div className="items-available" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-            <span style={{ width: "60px" }}>
+            <span style={{ width: "60px",backgroundColor: spanBgColor, color: spanFontColor }}>
               Gold
               <input
                 style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -256,7 +211,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
                 onChange={(e) => setGoldRate(e.target.value)}
               />
             </span>
-            <span style={{ width: "60px" }}>
+            <span style={{ width: "60px",backgroundColor: spanBgColor, color: spanFontColor }}>
               Silver
               <input
                 style={{ border: "1px solid #f39c12", width: "40px" }}

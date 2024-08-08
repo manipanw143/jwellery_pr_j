@@ -113,8 +113,9 @@ controls-container {
 
 .details p {
   margin: 2px 0;
-  color: #2c3e50;
+  color: #e1ecf6;
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 .items-available {
