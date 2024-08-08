@@ -10,6 +10,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [rate, setRate] = useState('');
   const [goldRate, setGoldRate] = useState('');
   const [silverRate, setSilverRate] = useState('');
+  const [selectedFestival, setSelectedFestival] = useState(festival);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -26,7 +27,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
     const cardElement = document.getElementById('jewelry-card');
     html2canvas(cardElement).then((canvas) => {
       canvas.toBlob((blob) => {
-        saveAs(blob, `${jewelryName}_${festival}.png`);
+        saveAs(blob, `${jewelryName}_${selectedFestival}.png`);
       });
     });
   };
@@ -45,7 +46,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
         <div className="logo-container">
           <h2 style={{ color: "#f39c12" }}>{shopName}</h2>
         </div>
-        <h2 className="festival-name">{festival}</h2>
+        <h2 className="festival-name">{selectedFestival}</h2>
         <div className="image-container">
           {image ? (
             <img src={image} alt={jewelryName} className="jewelry-image" />
@@ -72,7 +73,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setSelectedItem(e.target.value)}
             />
             <datalist id="jewelry-types">
-            <option value="Har" />
+              <option value="Har" />
               <option value="Deepa" />
               <option value="Silver dollar" />
               <option value="Necklace" />
@@ -217,6 +218,18 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             </span>
           </div>
         </div>
+      </div>
+      <div className="festival-selector">
+        <select
+          value={selectedFestival}
+          onChange={(e) => setSelectedFestival(e.target.value)}
+        >
+          <option value="Diwali">Diwali</option>
+          <option value="Dussehra">Dussehra</option>
+          <option value="Ganesh Chaturthi">Ganesh Chaturthi</option>
+          <option value="Navratri">Navratri</option>
+          <option value="Christmas">Christmas</option>
+        </select>
       </div>
       <input type="file" onChange={handleImageUpload} />
       <button onClick={downloadCard}>Download Card</button>

@@ -4,9 +4,8 @@
   align-items: center;
   padding: 10px;
 }
-
 .jewelry-card {
-  width: 100%;
+  /* width: 100%; */
   max-width: 350px;
   border: 2px solid #f39c12;
   border-radius: 10px;
@@ -111,4 +110,30 @@ button {
 
 button:hover {
   background-color: #c0392b;
+}
+
+/* Existing styles remain unchanged */
+
+.festival-selector {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.festival-selector select {
+  padding: 8px 10px;
+  font-size: 1em;
+  border: 1px solid #f39c12;
+  border-radius: 5px;
+  background-color: #fff8e1;
+  color: #d35400;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.festival-selector select:hover {
+  background-color: #ffe1a8;
 }

@@ -1,0 +1,26 @@
+.scroller-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f39c12;
+    color: white;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .scroller-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+  }
+  
+  .scroller-item {
+    display: inline-block;
+    padding: 0 20px;
+  }
+  
+  @keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  

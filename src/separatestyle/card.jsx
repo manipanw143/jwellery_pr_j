@@ -5,7 +5,7 @@ export const TempleCard = () => {
   return (
     
         <div className="sample-card">
-          <a href="/business" className="no-tap-highlight">
+          <a href="/new" className="no-tap-highlight">
             <div className="text-compact-xxs">
               <div className="relative card scorecard">
                 <div className="flex justify-between items-center">
