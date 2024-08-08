@@ -2,7 +2,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
+}
+controls-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.festival-selector {
+  display: flex;
+  align-items: center;
+  padding-top: 25px;
+}
+
+.festival-selector label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.festival-dropdown {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+}
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+}
+
+.color-picker-container input[type="color"] {
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 .jewelry-card {
   /* width: 100%; */

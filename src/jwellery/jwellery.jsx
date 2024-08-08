@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './jwellery.css';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
+import { FaPalette } from 'react-icons/fa'; // Importing the palette icon from react-icons
 
 const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Ambika Jewellers" }) => {
   const [image, setImage] = useState(null);
@@ -10,7 +11,9 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [rate, setRate] = useState('');
   const [goldRate, setGoldRate] = useState('');
   const [silverRate, setSilverRate] = useState('');
-  const [selectedFestival, setSelectedFestival] = useState(festival);
+  const [selectedFestival, setSelectedFestival] = useState(festival || 'Diwali');
+  const [customFestival, setCustomFestival] = useState('');
+  const [cardColor, setCardColor] = useState('#fff8e1'); // default card color
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -40,13 +43,58 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
     return `${day}/${month}/${year}`;
   };
 
+  const handleFestivalChange = (e) => {
+    const value = e.target.value;
+    if (value === "Custom") {
+      const customValue = prompt("Enter Custom Festival Name:");
+      if (customValue) {
+        setCustomFestival(customValue);
+        setSelectedFestival(customValue);
+      }
+    } else {
+      setSelectedFestival(value);
+      setCustomFestival('');
+    }
+  };
+
   return (
     <div className="card-container">
-      <div className="jewelry-card" id="jewelry-card">
+      <div className="controls-container">
+        <div className="festival-selector">
+          <label htmlFor="festival-select">Select Festival:</label>
+          <select 
+            id="festival-select"
+            className="festival-dropdown"
+            value={customFestival || selectedFestival} 
+            onChange={handleFestivalChange}
+          >
+            <option value="Diwali">Diwali</option>
+            <option value="Dussehra">Dussehra</option>
+            <option value="Ganesh Chaturthi">Ganesh Chaturthi</option>
+            <option value="Navratri">Navratri</option>
+            <option value="Christmas">Christmas</option>
+            <option value="Custom">Enter Custom Festival</option>
+          </select>
+        </div>
+        <div className="color-picker-container">
+          <FaPalette style={{ marginRight: '8px' }} />
+          <input 
+            type="color" 
+            value={cardColor} 
+            onChange={(e) => setCardColor(e.target.value)} 
+            title="Choose Card Color"
+          />
+        </div>
+      </div>
+      <div 
+        className="jewelry-card" 
+        id="jewelry-card" 
+        style={{ backgroundColor: cardColor }}
+      >
         <div className="logo-container">
           <h2 style={{ color: "#f39c12" }}>{shopName}</h2>
         </div>
-        <h2 className="festival-name">{selectedFestival}</h2>
+        <h2 className="festival-name">{customFestival || selectedFestival}</h2>
         <div className="image-container">
           {image ? (
             <img src={image} alt={jewelryName} className="jewelry-image" />
@@ -73,6 +121,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setSelectedItem(e.target.value)}
             />
             <datalist id="jewelry-types">
+              {/* Your existing jewelry options */}
               <option value="Har" />
               <option value="Deepa" />
               <option value="Silver dollar" />
@@ -219,18 +268,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           </div>
         </div>
       </div>
-      <div className="festival-selector">
-        <select
-          value={selectedFestival}
-          onChange={(e) => setSelectedFestival(e.target.value)}
-        >
-          <option value="Diwali">Diwali</option>
-          <option value="Dussehra">Dussehra</option>
-          <option value="Ganesh Chaturthi">Ganesh Chaturthi</option>
-          <option value="Navratri">Navratri</option>
-          <option value="Christmas">Christmas</option>
-        </select>
-      </div>
+      
       <input type="file" onChange={handleImageUpload} />
       <button onClick={downloadCard}>Download Card</button>
     </div>
