@@ -4,6 +4,7 @@ import React from 'react';
 import JewelryCard from './jwellery/jwellery';
 import './App.css';
 import Scroller from './Scroller';
+// import FAQComponent from './faqcomponent';
 // import Festivals from './scrolling/festival';
 // import Festivals from './scrolling/festival';
 
@@ -22,6 +23,7 @@ function App() {
       <Scroller items={scrollerItems} />
       <JewelryCard festival="Diwali" jewelryName="Necklace" />
       {/* <DiwaliCard/> */}
+      {/* <FAQComponent/> */}
     </div>
     </>
   );

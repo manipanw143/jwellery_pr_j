@@ -14,8 +14,9 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [selectedFestival, setSelectedFestival] = useState(festival || 'Diwali');
   const [customFestival, setCustomFestival] = useState('');
   const [cardColor, setCardColor] = useState('#fff8e1'); 
-  const [spanBgColor, setSpanBgColor] = useState('#f39c12'); // default background color for span
-  const [spanFontColor, setSpanFontColor] = useState('#fff'); // default font color for span
+  const [spanBgColor, setSpanBgColor] = useState('#f39c12'); 
+  const [spanFontColor, setSpanFontColor] = useState('#fff'); 
+  const [textColor, setTextColor] = useState('#f39c12'); // Color for Ambika Jewellers, Festival name, and contact details
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -62,15 +63,13 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const getBackgroundImage = (festival) => {
     switch (festival) {
       case 'Diwali':
-        return 'url(/Rangoli.jpg)';
+        return '';
       case 'Dussehra':
-        return 'url(/Di.jpg)';
-      case 'Ganesh Chaturthi':
-        return 'url(/path/to/ganesh-chaturthi-background.jpg)';
+        return '';
       case 'Navratri':
-        return 'url(/path/to/navratri-background.jpg)';
+        return '';
       case 'Christmas':
-        return 'url(/path/to/christmas-background.jpg)';
+        return '';
       default:
         return '';
     }
@@ -117,6 +116,13 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             title="Choose Span Font Color"
             style={{ marginLeft: '10px' }}
           />
+          <input 
+            type="color" 
+            value={textColor} 
+            onChange={(e) => setTextColor(e.target.value)} 
+            title="Choose Text Color"
+            style={{ marginLeft: '10px' }}
+          />
         </div>
       </div>
       <div 
@@ -130,10 +136,11 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="logo-container">
-          <h2 style={{ color: "#f39c12" }}>{shopName}</h2>
+        <div className="logo-container" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="./aj.jpeg" alt="Logo" className="logo" style={{ marginRight: '50px', width:"40px",height:"40px", borderRadius:"50%" }} /> 
+          <h2 style={{ color: textColor }}>{shopName}</h2>
         </div>
-        <h2 className="festival-name">{customFestival || selectedFestival}</h2>
+        <h2 className="festival-name" style={{ color: textColor }}>{customFestival || selectedFestival}</h2>
         <div className="image-container">
           {image ? (
             <img src={image} alt={jewelryName} className="jewelry-image" />
@@ -160,10 +167,94 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setSelectedItem(e.target.value)}
             />
             <datalist id="jewelry-types">
-              {/* Your existing jewelry options */}
+              {/* List of jewelry types */}
               <option value="Har" />
               <option value="Deepa" />
-              {/* Other options */}
+              <option value="Silver dollar" />
+              <option value="Necklace" />
+              <option value="Plate" />
+              <option value="Silver bracelet" />
+              <option value="Ring" />
+              <option value="Kum kum bharni" />
+              <option value="Silver black beds chain" />
+              <option value="Kamal" />
+              <option value="Snake" />
+              <option value="Silver rosary" />
+              <option value="Tali" />
+              <option value="Bowl" />
+              <option value="Silver gold plated item" />
+              <option value="Kola" />
+              <option value="Kamakshi deepa" />
+              <option value="Silver kada" />
+              <option value="Dollar" />
+              <option value="Vigraha" />
+              <option value="Silver bangle" />
+              <option value="Mura" />
+              <option value="Glass" />
+              <option value="Mattal" />
+              <option value="Banna plant" />
+              <option value="Chain" />
+              <option value="Panch patra" />
+              <option value="Laxmi kas" />
+              <option value="Rudrani" />
+              <option value="Stone gundu" />
+              <option value="Pal ada" />
+              <option value="Antique kamal" />
+              <option value="Neck chain" />
+              <option value="Antique har" />
+              <option value="Leg chain" />
+              <option value="Antique necklace" />
+              <option value="Cup plate" />
+              <option value="Jumkis" />
+              <option value="Dab" />
+              <option value="Pearl chains" />
+              <option value="Tulsi plant" />
+              <option value="Black beds chain" />
+              <option value="Bendgi" />
+              <option value="Bracelet" />
+              <option value="Chambu" />
+              <option value="Vale chip" />
+              <option value="Punjabi kada" />
+              <option value="Paner chambu" />
+              <option value="Mango bhat" />
+              <option value="Kalsa chambu" />
+              <option value="Tope tali" />
+              <option value="Cow" />
+              <option value="Stone mattal" />
+              <option value="Stand" />
+              <option value="Pendant" />
+              <option value="Flower butti" />
+              <option value="Baby bracelet" />
+              <option value="Fruit bowl" />
+              <option value="Choker" />
+              <option value="Silver frame" />
+              <option value="Jomalla gundu" />
+              <option value="Silver pen" />
+              <option value="Sima kada" />
+              <option value="Silver ring" />
+              <option value="Bangales" />
+              <option value="Arke item" />
+              <option value="Baby bangles" />
+              <option value="Gulsh" />
+              <option value="Bugri" />
+              <option value="Kada" />
+              <option value="Drops" />
+              <option value="Anaker" />
+              <option value="Gold frame" />
+              <option value="Gift item" />
+              <option value="Baby ring" />
+              <option value="Silver coin" />
+              <option value="Bessari" />
+              <option value="Old coin" />
+              <option value="Gold coin" />
+              <option value="Mandasana" />
+              <option value="Bell" />
+              <option value="Julla" />
+              <option value="Mala flower" />
+              <option value="Flower" />
+              <option value="Kapor arti" />
+              <option value="Spoon" />
+              <option value="Silver coconut" />
             </datalist>
           </span>
         </div>
@@ -177,7 +268,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setGram(e.target.value)}
             />
           </span>
-          <span style={{ width: "60px" , backgroundColor: spanBgColor, color: spanFontColor }}>
+          <span style={{ width: "60px", backgroundColor: spanBgColor, color: spanFontColor }}>
             Rate
             <input
               style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -187,7 +278,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             />
           </span>
         </div>
-        <div className="details">
+        <div className="details" style={{ color: textColor }}>
           <p>omgovindraj@gmail.com</p>
           <p>https://ambikajewellerys.vercel.app/</p>
           <p>9449987873</p>
@@ -223,9 +314,8 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           </div>
         </div>
       </div>
-      
       <input type="file" onChange={handleImageUpload} />
-      <button onClick={downloadCard}>Download Card</button>
+      <button className="download-button" onClick={downloadCard}>Download Card</button>
     </div>
   );
 };

@@ -1,0 +1,74 @@
+.aadhaar-screen__faq {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .aadhaar-screen__Faq-title-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .aadhaar-screen__Faq-title {
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .accordion-container-shadow {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .wrapper {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .accordion-shadow {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-shadow__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .faq-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .toggle-image {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+  }
+  
+  .accordion-shadow__panel {
+    overflow: hidden;
+    max-height: 0;
+  }
+  
+  .faq-content {
+    padding: 15px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .faq__unordered-list {
+    padding-left: 20px;
+  }
+  
+  .faq__list-items {
+    list-style-type: disc;
+  }
+  
