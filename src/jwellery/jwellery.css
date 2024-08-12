@@ -57,9 +57,6 @@ controls-container {
   overflow: hidden;
 }
 
-.logo-container {
-  margin-bottom: 10px;
-}
 
 .logo-placeholder {
   width: 50px;
@@ -72,6 +69,24 @@ controls-container {
   margin: 0 auto;
   border-radius: 50%;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Ensure text stays in one line */
+}
+
+.logo-container h2.ambikaje {
+  font-size: 22px;
+  font-weight: bold; /* Make the text bold */
+  color: #f39c12; /* Adjust color as needed */
+  margin: 0; /* Remove any margin that could cause wrapping */
+  white-space: nowrap; /* Ensure text stays in one line */
+  overflow: hidden; /* Prevent overflow of text */
+  text-overflow: ellipsis; /* Add ellipsis if text is too long */
+}
+
 
 .festival-name {
   font-size: 1.5em;
@@ -187,10 +202,7 @@ button:hover {
     font-weight: 800;
   }
 
-  .logo-container h2.ambikaje {
-    font-size: 22px;
-    font-weight: 800;
-  }
+  
 
   .card-container {
     padding: 10px;
