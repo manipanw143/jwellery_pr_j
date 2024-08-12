@@ -138,7 +138,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
       >
         <div className="logo-container" style={{ display: 'flex', alignItems: 'center' }}>
           <img src="./aj.jpeg" alt="Logo" className="logo" style={{ marginRight: '50px', width:"40px",height:"40px", borderRadius:"50%" }} /> 
-          <h2 style={{ color: textColor }}>{shopName}</h2>
+          <h2 className='ambikaje' style={{ color: textColor }}>{shopName}</h2>
         </div>
         <h2 className="festival-name" style={{ color: textColor }}>{customFestival || selectedFestival}</h2>
         <div className="image-container">
