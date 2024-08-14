@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './jwellery.css';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
-import { FaPalette } from 'react-icons/fa';
+import { FaPalette, FaCamera } from 'react-icons/fa';
+
 
 const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Ambika Jewellers" }) => {
   const [image, setImage] = useState(null);
@@ -17,6 +18,8 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const [spanBgColor, setSpanBgColor] = useState('#f39c12'); 
   const [spanFontColor, setSpanFontColor] = useState('#fff'); 
   const [textColor, setTextColor] = useState('#f39c12'); // Color for Ambika Jewellers, Festival name, and contact details
+  const [cameraEnabled, setCameraEnabled] = useState(false);
+  const videoRef = useRef(null);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -28,6 +31,19 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
       reader.readAsDataURL(file);
     }
   };
+
+  const handleCaptureImage = () => {
+    if (videoRef.current) {
+      const canvas = document.createElement('canvas');
+      canvas.width = videoRef.current.videoWidth;
+      canvas.height = videoRef.current.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+      const capturedImage = canvas.toDataURL('image/png');
+      setImage(capturedImage);
+      setCameraEnabled(false); // Turn off camera after capture
+    }
+  }
 
   const downloadCard = () => {
     const cardElement = document.getElementById('jewelry-card');
@@ -63,9 +79,8 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
   const getBackgroundImage = (festival) => {
     switch (festival) {
       case 'Diwali':
-        return '';
-      case 'Dussehra':
-        return '';
+        return '/Diwali.jpg';
+      case 'Dussehra': 
       case 'Navratri':
         return '';
       case 'Christmas':
@@ -75,6 +90,25 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
     }
   };
 
+  useEffect(() => {
+    if (cameraEnabled && videoRef.current) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play();
+        })
+        .catch((err) => {
+          console.error("Error accessing camera:", err);
+          setCameraEnabled(false);
+        });
+    } else {
+      // Stop camera if disabled
+      if (videoRef.current && videoRef.current.srcObject) {
+        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+      }
+    }
+  }, [cameraEnabled]);
+  
   return (
     <div className="card-container">
       <div className="controls-container">
@@ -142,7 +176,12 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
         </div>
         <h2 className="festival-name" style={{ color: textColor }}>{customFestival || selectedFestival}</h2>
         <div className="image-container">
-          {image ? (
+          {cameraEnabled ? (
+            <div>
+              <video ref={videoRef} style={{ maxWidth: '100%' }} />
+              <button onClick={handleCaptureImage} style={{ marginTop: '10px' }}>Capture Image</button>
+            </div>
+          ) : image ? (
             <img src={image} alt={jewelryName} className="jewelry-image" />
           ) : (
             <div className="placeholder-image">Upload Image</div>
@@ -315,6 +354,10 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
         </div>
       </div>
       <input type="file" onChange={handleImageUpload} />
+        <button onClick={() => setCameraEnabled(!cameraEnabled)}>
+          <FaCamera style={{ marginRight: '8px' }} />
+          {cameraEnabled ? "Turn Off Camera" : "Capture with Camera"}
+        </button>
       <button className="download-button" onClick={downloadCard}>Download Card</button>
     </div>
   );
