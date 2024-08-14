@@ -90,6 +90,29 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
     }
   };
 
+  const handleJewelryChange = (e) => {
+    const value = e.target.value;
+    setSelectedItem(value);
+  
+    // Map each option to its corresponding image
+    const imageMap = {
+      "Har": "/har.jpg",
+      "Deepa": "/images/deepa.png",
+      "Silver dollar": "/images/silver-dollar.png",
+      "Necklace": "/images/necklace.png",
+      "Ring": "/images/ring.png",
+      // Add paths for other items
+    };
+  
+    // Set the image based on the selected value
+    if (imageMap[value]) {
+      setImage(imageMap[value]);
+    } else {
+      setImage(null); // Clear the image if not found
+    }
+  };
+  
+
   useEffect(() => {
     if (cameraEnabled && videoRef.current) {
       navigator.mediaDevices.getUserMedia({ video: true })
@@ -108,7 +131,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
       }
     }
   }, [cameraEnabled]);
-  
+
   return (
     <div className="card-container">
       <div className="controls-container">
@@ -182,7 +205,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               <button onClick={handleCaptureImage} style={{ marginTop: '10px' }}>Capture Image</button>
             </div>
           ) : image ? (
-            <img src={image} alt={jewelryName} className="jewelry-image" />
+            <img src={image} alt={selectedItem} className="jewelry-image" />
           ) : (
             <div className="placeholder-image">Upload Image</div>
           )}
@@ -203,7 +226,8 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               placeholder="Enter or Select"
               list="jewelry-types"
               value={selectedItem}
-              onChange={(e) => setSelectedItem(e.target.value)}
+              // onChange={(e) => setSelectedItem(e.target.value)}
+              onChange={handleJewelryChange}
             />
             <datalist id="jewelry-types">
               {/* List of jewelry types */}
@@ -353,7 +377,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           </div>
         </div>
       </div>
-      <input type="file" onChange={handleImageUpload} />
+      <input type="file" accept="image/*" onChange={handleImageUpload} />
         <button onClick={() => setCameraEnabled(!cameraEnabled)}>
           <FaCamera style={{ marginRight: '8px' }} />
           {cameraEnabled ? "Turn Off Camera" : "Capture with Camera"}
