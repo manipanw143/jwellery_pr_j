@@ -4,6 +4,7 @@ import React from 'react';
 import JewelryCard from './jwellery/jwellery';
 import './App.css';
 import Scroller from './Scroller';
+import CarouselComponent from './Carouselco';
 // import FAQComponent from './faqcomponent';
 // import Festivals from './scrolling/festival';
 // import Festivals from './scrolling/festival';
@@ -24,6 +25,7 @@ function App() {
       <JewelryCard festival="Diwali" jewelryName="Necklace" />
       {/* <DiwaliCard/> */}
       {/* <FAQComponent/> */}
+      <CarouselComponent/>
     </div>
     </>
   );
