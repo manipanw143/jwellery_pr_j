@@ -145,16 +145,7 @@ const JewelryCard = ({
   return (
     <div className="card-container">
       <div className="controls-container">
-        <div className="offer-input-container">
-          <label htmlFor="offer-input">Set Offer Text:</label>
-          <input
-            id="offer-input"
-            type="text"
-            value={offerText}
-            onChange={(e) => setOfferText(e.target.value)}
-            placeholder="Enter your offer here"
-          />
-        </div>
+
 
         <div className="festival-selector">
           <label htmlFor="festival-select">Select Festival:</label>
@@ -495,6 +486,16 @@ const JewelryCard = ({
           </div>
         </div>
       </div>
+      <div className="offer-input-container">
+          <label htmlFor="offer-input">Set Offer Text:</label>
+          <input
+            id="offer-input"
+            type="text"
+            value={offerText}
+            onChange={(e) => setOfferText(e.target.value)}
+            placeholder="Enter your offer here"
+          />
+        </div>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       <button onClick={() => setCameraEnabled(!cameraEnabled)}>
         <FaCamera style={{ marginRight: "8px" }} />
@@ -503,6 +504,7 @@ const JewelryCard = ({
       <button className="download-button" onClick={downloadCard}>
         Download Card
       </button>
+      
     </div>
   );
 };
