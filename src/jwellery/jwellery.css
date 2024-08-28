@@ -57,6 +57,18 @@ controls-container {
   overflow: hidden;
 }
 
+.offer-container {
+  background-color: #ffeb3b;
+  color: #d32f2f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+
 
 .logo-placeholder {
   width: 50px;
@@ -204,13 +216,14 @@ button:hover {
 
   .card-container {
     padding: 10px;
+    margin-top: 110px;
   }
 
   .controls-container {
     flex-direction: column;
     align-items: flex-start;
   }
-
+  
   .download-button {
     width: 100%;
   }

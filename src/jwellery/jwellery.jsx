@@ -1,24 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './jwellery.css';
-import html2canvas from 'html2canvas';
-import { saveAs } from 'file-saver';
-import { FaPalette, FaCamera } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from "react";
+import "./jwellery.css";
+import html2canvas from "html2canvas";
+import { saveAs } from "file-saver";
+import { FaPalette, FaCamera } from "react-icons/fa";
 
-
-const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Ambika Jewellers" }) => {
+const JewelryCard = ({
+  festival,
+  jewelryName = "Sample Jewelry",
+  shopName = "Ambika Jewellers",
+}) => {
   const [image, setImage] = useState(null);
-  const [selectedItem, setSelectedItem] = useState('');
-  const [gram, setGram] = useState('');
-  const [rate, setRate] = useState('');
-  const [goldRate, setGoldRate] = useState('');
-  const [silverRate, setSilverRate] = useState('');
-  const [selectedFestival, setSelectedFestival] = useState(festival || 'Diwali');
-  const [customFestival, setCustomFestival] = useState('');
-  const [cardColor, setCardColor] = useState('#fff8e1'); 
-  const [spanBgColor, setSpanBgColor] = useState('#f39c12'); 
-  const [spanFontColor, setSpanFontColor] = useState('#fff'); 
-  const [textColor, setTextColor] = useState('#f39c12'); // Color for Ambika Jewellers, Festival name, and contact details
+  const [selectedItem, setSelectedItem] = useState("");
+  const [gram, setGram] = useState("");
+  const [rate, setRate] = useState("");
+  const [goldRate, setGoldRate] = useState("");
+  const [silverRate, setSilverRate] = useState("");
+  const [selectedFestival, setSelectedFestival] = useState(
+    festival || "Diwali"
+  );
+  const [customFestival, setCustomFestival] = useState("");
+  const [cardColor, setCardColor] = useState("#fff8e1");
+  const [spanBgColor, setSpanBgColor] = useState("#f39c12");
+  const [spanFontColor, setSpanFontColor] = useState("#fff");
+  const [textColor, setTextColor] = useState("#f39c12"); // Color for Ambika Jewellers, Festival name, and contact details
   const [cameraEnabled, setCameraEnabled] = useState(false);
+  const [offerText, setOfferText] = useState(
+    "Special Diwali Offer: 20% Off on All Gold Jewelry!"
+  );
   const videoRef = useRef(null);
 
   const handleImageUpload = (event) => {
@@ -34,19 +42,19 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
 
   const handleCaptureImage = () => {
     if (videoRef.current) {
-      const canvas = document.createElement('canvas');
+      const canvas = document.createElement("canvas");
       canvas.width = videoRef.current.videoWidth;
       canvas.height = videoRef.current.videoHeight;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-      const capturedImage = canvas.toDataURL('image/png');
+      const capturedImage = canvas.toDataURL("image/png");
       setImage(capturedImage);
       setCameraEnabled(false); // Turn off camera after capture
     }
-  }
+  };
 
   const downloadCard = () => {
-    const cardElement = document.getElementById('jewelry-card');
+    const cardElement = document.getElementById("jewelry-card");
     html2canvas(cardElement).then((canvas) => {
       canvas.toBlob((blob) => {
         saveAs(blob, `${jewelryName}_${selectedFestival}.png`);
@@ -56,8 +64,8 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
 
   const datedata = () => {
     let date = new Date();
-    let day = String(date.getDate()).padStart(2, '0');
-    let month = String(date.getMonth() + 1).padStart(2, '0');
+    let day = String(date.getDate()).padStart(2, "0");
+    let month = String(date.getMonth() + 1).padStart(2, "0");
     let year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -72,38 +80,38 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
       }
     } else {
       setSelectedFestival(value);
-      setCustomFestival('');
+      setCustomFestival("");
     }
   };
 
   const getBackgroundImage = (festival) => {
     switch (festival) {
-      case 'Diwali':
-        return '/Diwali.jpg';
-      case 'Dussehra': 
-      case 'Navratri':
-        return '';
-      case 'Christmas':
-        return '';
+      case "Diwali":
+        return "/Diwali.jpg";
+      case "Dussehra":
+      case "Navratri":
+        return "";
+      case "Christmas":
+        return "";
       default:
-        return '';
+        return "";
     }
   };
 
   const handleJewelryChange = (e) => {
     const value = e.target.value;
     setSelectedItem(value);
-  
+
     // Map each option to its corresponding image
     const imageMap = {
-      "Har": "/har.jpg",
-      "Deepa": "/images/deepa.png",
+      Har: "/har.jpg",
+      Deepa: "/images/deepa.png",
       "Silver dollar": "/images/silver-dollar.png",
-      "Necklace": "/images/necklace.png",
-      "Ring": "/images/ring.png",
+      Necklace: "/images/necklace.png",
+      Ring: "/images/ring.png",
       // Add paths for other items
     };
-  
+
     // Set the image based on the selected value
     if (imageMap[value]) {
       setImage(imageMap[value]);
@@ -111,13 +119,13 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
       setImage(null); // Clear the image if not found
     }
   };
-  
 
   useEffect(() => {
     if (cameraEnabled && videoRef.current) {
-      navigator.mediaDevices.getUserMedia({
-        video: { facingMode: { exact: "environment" } } // Add this line to prefer back camera
-      })
+      navigator.mediaDevices
+        .getUserMedia({
+          video: { facingMode: { exact: "environment" } }, // Add this line to prefer back camera
+        })
         .then((stream) => {
           videoRef.current.srcObject = stream;
           videoRef.current.play();
@@ -129,21 +137,31 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
     } else {
       // Stop camera if disabled
       if (videoRef.current && videoRef.current.srcObject) {
-        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+        videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
       }
     }
   }, [cameraEnabled]);
-  
 
   return (
     <div className="card-container">
       <div className="controls-container">
+        <div className="offer-input-container">
+          <label htmlFor="offer-input">Set Offer Text:</label>
+          <input
+            id="offer-input"
+            type="text"
+            value={offerText}
+            onChange={(e) => setOfferText(e.target.value)}
+            placeholder="Enter your offer here"
+          />
+        </div>
+
         <div className="festival-selector">
           <label htmlFor="festival-select">Select Festival:</label>
-          <select 
+          <select
             id="festival-select"
             className="festival-dropdown"
-            value={customFestival || selectedFestival} 
+            value={customFestival || selectedFestival}
             onChange={handleFestivalChange}
           >
             <option value="Diwali">Diwali</option>
@@ -155,57 +173,97 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           </select>
         </div>
         <div className="color-picker-container">
-          <FaPalette style={{ marginRight: '8px' }} />
-          <input 
-            type="color" 
-            value={cardColor} 
-            onChange={(e) => setCardColor(e.target.value)} 
+          <FaPalette style={{ marginRight: "8px" }} />
+          <input
+            type="color"
+            value={cardColor}
+            onChange={(e) => setCardColor(e.target.value)}
             title="Choose Card Color"
           />
-          <input 
-            type="color" 
-            value={spanBgColor} 
-            onChange={(e) => setSpanBgColor(e.target.value)} 
+          <input
+            type="color"
+            value={spanBgColor}
+            onChange={(e) => setSpanBgColor(e.target.value)}
             title="Choose Span Background Color"
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: "10px" }}
           />
-          <input 
-            type="color" 
-            value={spanFontColor} 
-            onChange={(e) => setSpanFontColor(e.target.value)} 
+          <input
+            type="color"
+            value={spanFontColor}
+            onChange={(e) => setSpanFontColor(e.target.value)}
             title="Choose Span Font Color"
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: "10px" }}
           />
-          <input 
-            type="color" 
-            value={textColor} 
-            onChange={(e) => setTextColor(e.target.value)} 
+          <input
+            type="color"
+            value={textColor}
+            onChange={(e) => setTextColor(e.target.value)}
             title="Choose Text Color"
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: "10px" }}
           />
         </div>
       </div>
-      <div 
-        className="jewelry-card" 
-        id="jewelry-card" 
-        style={{ 
-          backgroundColor: cardColor, 
-          backgroundImage: getBackgroundImage(customFestival || selectedFestival),
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+      <div
+        className="jewelry-card"
+        id="jewelry-card"
+        style={{
+          backgroundColor: cardColor,
+          backgroundImage: getBackgroundImage(
+            customFestival || selectedFestival
+          ),
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="logo-container" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="./aj.jpeg" alt="Logo" className="logo" style={{ marginRight: '50px', width:"40px",height:"40px", borderRadius:"50%" }} /> 
-          <h2 className='ambikaje' style={{ color: textColor }}>{shopName}</h2>
+        <div
+          className="logo-container"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <img
+            src="./aj.jpeg"
+            alt="Logo"
+            className="logo"
+            style={{
+              marginRight: "50px",
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+            }}
+          />
+          <h2 className="ambikaje" style={{ color: textColor }}>
+            {shopName}
+          </h2>
         </div>
-        <h2 className="festival-name" style={{ color: textColor }}>{customFestival || selectedFestival}</h2>
+        <h2 className="festival-name" style={{ color: textColor }}>
+          {customFestival || selectedFestival}
+        </h2>
+
+        <div
+          className="offer-container"
+          style={{
+            backgroundColor: "#ffeb3b",
+            color: "#d32f2f",
+            padding: "10px",
+            borderRadius: "5px",
+            marginTop: "10px",
+            textAlign: "center",
+            fontWeight: "bold",
+          }}
+        >
+          {offerText}
+        </div>
+
         <div className="image-container">
           {cameraEnabled ? (
             <div>
-              <video ref={videoRef} style={{ maxWidth: '100%' }} />
-              <button onClick={handleCaptureImage} style={{ marginTop: '10px' }}>Capture Image</button>
+              <video ref={videoRef} style={{ maxWidth: "100%" }} />
+              <button
+                onClick={handleCaptureImage}
+                style={{ marginTop: "10px" }}
+              >
+                Capture Image
+              </button>
             </div>
           ) : image ? (
             <img src={image} alt={selectedItem} className="jewelry-image" />
@@ -213,6 +271,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             <div className="placeholder-image">Upload Image</div>
           )}
         </div>
+
         <div className="items-available">
           <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>
             <input
@@ -223,7 +282,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
                 fontWeight: "bold",
                 textAlign: "center",
                 padding: "5px",
-                borderRadius: "5px"
+                borderRadius: "5px",
               }}
               type="text"
               placeholder="Enter or Select"
@@ -324,8 +383,21 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
             </datalist>
           </span>
         </div>
-        <div className="items-available" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-          <span style={{ width: "60px", backgroundColor: spanBgColor, color: spanFontColor }}>
+        <div
+          className="items-available"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <span
+            style={{
+              width: "60px",
+              backgroundColor: spanBgColor,
+              color: spanFontColor,
+            }}
+          >
             Gram
             <input
               style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -334,7 +406,13 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
               onChange={(e) => setGram(e.target.value)}
             />
           </span>
-          <span style={{ width: "60px", backgroundColor: spanBgColor, color: spanFontColor }}>
+          <span
+            style={{
+              width: "60px",
+              backgroundColor: spanBgColor,
+              color: spanFontColor,
+            }}
+          >
             Rate
             <input
               style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -348,18 +426,49 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
           <p>omgovindraj@gmail.com</p>
           <p>https://ambikajewellerys.vercel.app/</p>
           <p>9449987873</p>
-          <p>#27, Nehru Road, Kullappa Circle, Kammanahalli, Bangalore~560084</p>
+          <p>
+            #27, Nehru Road, Kullappa Circle, Kammanahalli, Bangalore~560084
+          </p>
         </div>
         <div className="items-available">
-          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }} >Gold Jewellery, Silver Jewellery</span>
-          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>Antique Jewellery, Diamond Jewellery</span>
-          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>Lucky Birth Stone Jewellery</span>
-          <span style={{ fontFamily: "bold",backgroundColor: spanBgColor, color: spanFontColor }} >
-            Today Rate
-            <span style={{ backgroundColor: spanBgColor, color: spanFontColor }} >Date : {datedata()}</span>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>
+            Gold Jewellery, Silver Jewellery
           </span>
-          <div className="items-available" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-            <span style={{ width: "60px",backgroundColor: spanBgColor, color: spanFontColor }}>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>
+            Antique Jewellery, Diamond Jewellery
+          </span>
+          <span style={{ backgroundColor: spanBgColor, color: spanFontColor }}>
+            Lucky Birth Stone Jewellery
+          </span>
+          <span
+            style={{
+              fontFamily: "bold",
+              backgroundColor: spanBgColor,
+              color: spanFontColor,
+            }}
+          >
+            Today Rate
+            <span
+              style={{ backgroundColor: spanBgColor, color: spanFontColor }}
+            >
+              Date : {datedata()}
+            </span>
+          </span>
+          <div
+            className="items-available"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <span
+              style={{
+                width: "60px",
+                backgroundColor: spanBgColor,
+                color: spanFontColor,
+              }}
+            >
               Gold
               <input
                 style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -368,7 +477,13 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
                 onChange={(e) => setGoldRate(e.target.value)}
               />
             </span>
-            <span style={{ width: "60px",backgroundColor: spanBgColor, color: spanFontColor }}>
+            <span
+              style={{
+                width: "60px",
+                backgroundColor: spanBgColor,
+                color: spanFontColor,
+              }}
+            >
               Silver
               <input
                 style={{ border: "1px solid #f39c12", width: "40px" }}
@@ -381,11 +496,13 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
         </div>
       </div>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
-        <button onClick={() => setCameraEnabled(!cameraEnabled)}>
-          <FaCamera style={{ marginRight: '8px' }} />
-          {cameraEnabled ? "Turn Off Camera" : "Capture with Camera"}
-        </button>
-      <button className="download-button" onClick={downloadCard}>Download Card</button>
+      <button onClick={() => setCameraEnabled(!cameraEnabled)}>
+        <FaCamera style={{ marginRight: "8px" }} />
+        {cameraEnabled ? "Turn Off Camera" : "Capture with Camera"}
+      </button>
+      <button className="download-button" onClick={downloadCard}>
+        Download Card
+      </button>
     </div>
   );
 };
