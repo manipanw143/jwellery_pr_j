@@ -115,7 +115,9 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
 
   useEffect(() => {
     if (cameraEnabled && videoRef.current) {
-      navigator.mediaDevices.getUserMedia({ video: true })
+      navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { exact: "environment" } } // Add this line to prefer back camera
+      })
         .then((stream) => {
           videoRef.current.srcObject = stream;
           videoRef.current.play();
@@ -131,6 +133,7 @@ const JewelryCard = ({ festival, jewelryName = "Sample Jewelry", shopName = "Amb
       }
     }
   }, [cameraEnabled]);
+  
 
   return (
     <div className="card-container">
